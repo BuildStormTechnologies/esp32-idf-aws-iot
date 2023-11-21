@@ -1,0 +1,7 @@
+build
+.vscode
+*.pem
+*.crt
+*.key
+*.bak
+*.old
