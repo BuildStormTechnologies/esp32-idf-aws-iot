@@ -1,8 +1,20 @@
 /**
- * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ * \copyright Copyright (c) 2019-2024, Buildstorm Pvt Ltd
  *
  * \file lib_jobs.h
  * \brief AWS Jobs library header file.
+ *
+ * AWS Jobs library handles the job api's.
+ *
+ * The libraries have been tested on the ESP32 modules.
+ * Buildstorm explicitly denies responsibility for any hardware failures
+ * arising from the use of these libraries, whether directly or indirectly.
+ *
+ * EULA LICENSE:
+ * This library is licensed under end user license EULA agreement.
+ * The EULA is available at https://buildstorm.com/eula/
+ * For any support contact us at hello@buildstorm.com
+ *
  */
 
 #ifndef LIB_JOBS_H_
@@ -50,7 +62,7 @@ typedef jobsStatus_et (*jobCallback_t)(const job_st *ps_job);
  * @param [in] timeoutMin_u8 The minimum timeout value when Job is running
  * @param [in] callbackHandler The callback handler for performing Job action
  */
-bool JOBS_register(char *pJobActionStr, uint8_t timeoutMin_u8, jobCallback_t callbackHandler);
+bool JOBS_register(const char *pJobActionStr, uint8_t timeoutMin_u8, jobCallback_t callbackHandler);
 
 /**
  * @brief Update the status of Job to AWS IoT.

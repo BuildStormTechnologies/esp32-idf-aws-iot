@@ -1,8 +1,20 @@
 /**
- * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ * \copyright Copyright (c) 2019-2024, Buildstorm Pvt Ltd
  *
  * \file lib_uart.h
  * \brief UART library header file.
+ *
+ * The UART library handles UART operations.
+ *
+ * The libraries have been tested on the ESP32 modules.
+ * Buildstorm explicitly denies responsibility for any hardware failures
+ * arising from the use of these libraries, whether directly or indirectly.
+ *
+ * EULA LICENSE:
+ * This library is licensed under end user license EULA agreement.
+ * The EULA is available at https://buildstorm.com/eula/
+ * For any support contact us at hello@buildstorm.com
+ *
  */
 
 #ifndef _LIB_UART_H_
@@ -86,8 +98,8 @@ uint16_t UART_write(uartPortNum_et uartPortNum_e, uint8_t *pBuff_u8, uint16_t le
 /****************************************************************************************************
  *                           Function Mapping To Support Muliple Channels
  *****************************************************************************************************/
-#define UART1_Init(baudRate_u32, pinTx_u16, pinRx_u16,rxCb) UART_Init(UART_PORT_NUM_1, baudRate_u32, pinTx_u16, pinRx_u16,rxCb)
-#define UART2_Init(baudRate_u32, pinTx_u16, pinRx_u16,rxCb) UART_Init(UART_PORT_NUM_2, baudRate_u32, pinTx_u16, pinRx_u16,rxCb)
+#define UART1_Init(baudRate_u32, pinTx_u16, pinRx_u16, rxCb) UART_Init(UART_PORT_NUM_1, baudRate_u32, pinTx_u16, pinRx_u16, rxCb)
+#define UART2_Init(baudRate_u32, pinTx_u16, pinRx_u16, rxCb) UART_Init(UART_PORT_NUM_2, baudRate_u32, pinTx_u16, pinRx_u16, rxCb)
 
 #define UART1_available() UART_available(UART_PORT_NUM_1)
 #define UART2_available() UART_available(UART_PORT_NUM_2)
@@ -102,4 +114,4 @@ uint16_t UART_write(uartPortNum_et uartPortNum_e, uint8_t *pBuff_u8, uint16_t le
 #define UART1_write(pBuff_u8, len_u16) UART_write(UART_PORT_NUM_1, pBuff_u8, len_u16)
 #define UART2_write(pBuff_u8, len_u16) UART_write(UART_PORT_NUM_2, pBuff_u8, len_u16)
 
-#endif
+#endif //_LIB_UART_H_

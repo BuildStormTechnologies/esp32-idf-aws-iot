@@ -1,8 +1,19 @@
 /**
- * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ * \copyright Copyright (c) 2019-2024, Buildstorm Pvt Ltd
  *
  * \file lib_ble.h
  * \brief A BLE library file
+ *
+ * The Ble library handles Ble core operations.
+ *
+ * The libraries have been tested on the ESP32 modules.
+ * Buildstorm explicitly denies responsibility for any hardware failures
+ * arising from the use of these libraries, whether directly or indirectly.
+ *
+ * EULA LICENSE:
+ * This library is licensed under end user license EULA agreement.
+ * The EULA is available at https://buildstorm.com/eula/
+ * For any support contact us at hello@buildstorm.com
  *
  */
 
@@ -66,8 +77,6 @@ void BLE_disconnect();
 bool BLE_packetRegister(char *pPacketStr, bleCallBack_t callbackHandler);
 bleWrtStatus_et BLE_packetSendData(char *pPacketStr, char *pDataStr, uint8_t code_u8);
 bleWrtStatus_et BLE_packetSendAck(char *pPacketStr, uint8_t code_u8);
-void BLE_printStatus();
 const char *BLE_getStateString();
-uint32_t BLE_getLastActiveTime();
 
-#endif
+#endif //_LIB_BLE_H_

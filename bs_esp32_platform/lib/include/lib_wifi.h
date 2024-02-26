@@ -1,9 +1,23 @@
 /**
- * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
- *
- * \file lib_wifi.h
- * \brief WiFi library header file
- */
+* \copyright Copyright (c) 2019-2024, Buildstorm Pvt Ltd
+*
+* \file lib_wifi.h
+* \brief Wifi library header file.
+*
+*
+* The Wifi library handles the Wifi operations.
+*
+* The libraries have been tested on the ESP32 modules.
+* Buildstorm explicitly denies responsibility for any hardware failures
+* arising from the use of these libraries, whether directly or indirectly.
+
+*
+* EULA LICENSE:
+* This library is licensed under end user license EULA agreement.
+* The EULA is available at https://buildstorm.com/eula/
+* For any support contact us at hello@buildstorm.com
+*
+*/
 
 #ifndef _LIB_WIFI_H_
 #define _LIB_WIFI_H_
@@ -23,15 +37,15 @@
  */
 typedef enum
 {
-    STATE_WIFI_IDLE,         /*!< Idle state */
-    STATE_WIFI_SCAN,         /*!< Scanning for SSIDs */
-    STATE_WIFI_START,        /*!< Start WiFi */
-    STATE_WIFI_START_SERVER, /*!< Start WiFi, AP Server */
-    STATE_WIFI_DISCONNECTED, /*!< WiFi disconnected */
-    STATE_WIFI_CONNECTED,    /*!< WiFi connected */
+    STATE_WIFI_IDLE,                    /*!< Idle state */
+    STATE_WIFI_SCAN,                    /*!< Scanning for SSIDs */
+    STATE_WIFI_START,                   /*!< Start WiFi */
+    STATE_WIFI_START_SERVER,            /*!< Start WiFi, AP Server */
+    STATE_WIFI_DISCONNECTED,            /*!< WiFi disconnected */
+    STATE_WIFI_CONNECTED,               /*!< WiFi connected */
     STATE_WIFI_SERVER_STA_CONNECTED,    /*!< WiFi connected */
-    STATE_WIFI_SERVER_STA_DISCONNECTED,    /*!< WiFi connected */
-    STATE_WIFI_MAX,          /*!< Total number of states */
+    STATE_WIFI_SERVER_STA_DISCONNECTED, /*!< WiFi connected */
+    STATE_WIFI_MAX,                     /*!< Total number of states */
 } wifiStates_et;
 
 /**
@@ -76,13 +90,6 @@ uint8_t WIFI_getSignalStrength();
 int8_t WIFI_getRssi();
 
 /**
- * @brief Print the WiFi status.
- * @param none
- * @returns none
- */
-void WIFI_printStatus();
-
-/**
  * @brief Get WiFi state as string.
  * @param none
  * @returns WiFi state as string.
@@ -93,42 +100,7 @@ void WIFI_printStatus();
  * @retval "CONNECTED" - for STATE_WIFI_CONNECTED
  */
 const char *WIFI_getStateString();
-
-/**
- * @brief Get list of avaialable Access Points (AP)
- * @param [out] pBuffer outputs list of APs
- * @returns Total number of available APs
- */
-uint16_t WIFI_getApList(char *pBuffer);
-
-/**
- * @brief Verifies if the SSID is valid and listed in AP Scan list
- * @param [in] pSsid SSID to be validated
- * @returns bool True(Found)/False(Not Found)
- */
-bool WIFI_verifySsid(char *pSsid);
-
-/**
- * @brief Updates the ssid and password for wifi connection
- * @param [in] pSsidStr,pPwdStr SSID and Passwords to be used for connection
- * @returns bool True(Successfull)/False(Invalid SSID/Pwd)
- */
-bool WIFI_updateCredentials(char *pSsidStr, char *pPwdStr);
-
-/**
- * @brief Close the Wifi connection.
- * @param none
- * @returns none
- */
-void WIFI_close();
-
-/**
- * @brief Restart the Wifi connection.
- * @param none
- * @returns none
- */
-void WIFI_restart();
-
 wifiStates_et WIFI_getState();
+const char *WIFI_getSSID();
 
-#endif
+#endif //_LIB_WIFI_H_

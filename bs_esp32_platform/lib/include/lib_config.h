@@ -1,8 +1,22 @@
 /**
- * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ * \copyright Copyright (c) 2019-2024, Buildstorm Pvt Ltd
  *
  * \file lib_config.h
- * \brief Configuration header file.
+ * \brief Config library header file.
+ *
+ *
+ * The Config library takes care of the configurations needed for Wifi, Ble ,Device ,Http
+ * MQTT, Task, Flash, Ota.
+ *
+ * The libraries have been tested on the ESP32 modules.
+ * Buildstorm explicitly denies responsibility for any hardware failures
+ * arising from the use of these libraries, whether directly or indirectly.
+ *
+ * EULA LICENSE:
+ * This library is licensed under end user license EULA agreement.
+ * The EULA is available at https://buildstorm.com/eula/
+ * For any support contact us at hello@buildstorm.com
+ *
  */
 
 #ifndef _LIB_CONFIG_H_
@@ -22,18 +36,16 @@ typedef enum
     PRINT_LEVEL_NONE = 0,    /*!< Does not print any log messages */
     PRINT_LEVEL_ERROR = 1,   /*!< Prints Error level log messages alone */
     PRINT_LEVEL_VERBOSE = 1, /*!< Prints log messages of both Error & Verbose level */
-    PRINT_LEVEL_DEMO = 2,    /*!< Prints demo logs, used for better logging of demos examples */
-    PRINT_LEVEL_INFO = 3,    /*!< Prints log messages of Error, Verbose & Info level */
-    PRINT_LEVEL_DEBUG = 4,   /*!< Prints log messages of all levels */
-    PRINT_LEVEL_MAX = 5      /*!< Total number of log levels */
+    PRINT_LEVEL_INFO = 2,    /*!< Prints log messages of Error, Verbose & Info level */
+    PRINT_LEVEL_DEBUG = 3,   /*!< Prints log messages of all levels */
+    PRINT_LEVEL_MAX = 4      /*!< Total number of log levels */
 } logLevels_et;
 
-#define LOG_LEVEL_MAPPING       \
-    {                           \
-        'n', 'e', '0', 'i', 'd' \
+#define LOG_LEVEL_MAPPING  \
+    {                      \
+        'n', 'e', 'i', 'd' \
     }
 #define GLOBAL_LOG_LEVEL PRINT_LEVEL_ERROR
-#define STR_LOG_PASS_CODE "[12345678]" // TODO: expose to user ????
 
 /**
  * @enum menusLibModule_et
@@ -45,10 +57,8 @@ typedef enum
     LIB_MODULE_SYSTEM,
     LIB_MODULE_BLE,
     LIB_MODULE_WIFI,
-    LIB_MODULE_MQTT,
     LIB_MODULE_AWS,
     LIB_MODULE_JOBS,
-    LIB_MODULE_GPIO,
     LIB_MODULE_FLASH,
     DRV_MODULE_BLE,
     LIB_MODULE_JSON,
@@ -85,8 +95,8 @@ typedef enum
 #define HTTP_RING_BUFFER_SIZE 4
 
 //--------------------------MQTT CONFIG--------------------------------/
-#define STR_MQTT_TOPIC_OTA "topicOTA/ESP32"
 
+#define LENGTH_MQTT_HOST 150
 #define LENGTH_MQTT_TOPIC 100
 #define LENGTH_MQTT_PAYLOAD 1024
 #define MQTT_MAX_SUBSCRIBE_TOPICS 4
@@ -94,6 +104,8 @@ typedef enum
 #define LENGTH_MQTT_URI LENGTH_HTTP_URL
 #define LENGTH_MQTT_USERNAME 32
 #define LENGTH_MQTT_PASSWORD 32
+#define LENGTH_MQTT_CLIENT_ID 32
+#define LENGTH_THING_NAME LENGTH_DEVICE_NAME
 
 #define MQTT_PUB_RING_BUFFER_SIZE 5
 #define MQTT_SUB_RING_BUFFER_SIZE 3
@@ -149,4 +161,4 @@ typedef enum
 //------------------------OTA CONFIG--------------------------------/
 #define LENGTH_OTA_URL LENGTH_HTTP_URL
 
-#endif
+#endif //__LIB_CONFIG_H__

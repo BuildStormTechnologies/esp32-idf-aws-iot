@@ -1,11 +1,21 @@
 /**
- * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ * \copyright Copyright (c) 2019-2024, Buildstorm Pvt Ltd
  *
  * \file lib_aws.h
  * \brief An AWS library file
  *
  *  AWS library handles AWS IoT events like Publish, Subscribe,
  *  Shadow updates, Connection events, Device Provisioning... etc.
+ *
+ * The libraries have been tested on the ESP32 modules.
+ * Buildstorm explicitly denies responsibility for any hardware failures
+ * arising from the use of these libraries, whether directly or indirectly.
+ *
+ * EULA LICENSE:
+ * This library is licensed under end user license EULA agreement.
+ * The EULA is available at https://buildstorm.com/eula/
+ * For any support contact us at hello@buildstorm.com
+ *
  */
 
 #ifndef _LIB_AWS_H_
@@ -35,28 +45,18 @@ typedef enum
     STATE_AWS_MAX               /*!< Total number of AWS states */
 } awsIotStates_et;
 
-
-
-
 /**
  * @brief Subscribe message callback function type. The application should
  * define the callback function
  */
 typedef void (*awsSubscribeCallback_t)(const char *pTopic, const char *pPayload);
 
-
 /**
  * @brief AWS configuration structure used by the library.
  */
 typedef struct
 {
-    char hostNameStr[LENGTH_HTTP_URL];               /*!< AWS IoT Endpoint */
-    uint16_t port_u16;                               /*!< AWS IoT port number */
-    uint8_t maxShadowCount_u8;                       /*!< Number of shadow elements supported */
-    uint8_t maxPublishMessagesToStore_u8;            /*!< Number of publish messaged stored in Ringbuffer */
-    uint8_t maxSubscribeMessagesToStore_u8;          /*!< Number of Subscribe messages stored in Ringbuffer */
-    uint8_t maxSubscribeTopics_u8;                   /*!< Number of Subscribe topics supported */
-    uint8_t maxJobs_u8;                              /*!< Number of jobs supported */
+    char *pHostNameStr;                              /*!< AWS IoT Endpoint */
     char *pRootCaStr;                                /*!< Root CA certificate string */
     char *pThingCertStr;                             /*!< Thing ceritificate string */
     char *pThingPrivateKeyStr;                       /*!< Thing Private key string */
@@ -64,8 +64,13 @@ typedef struct
     char *pClaimPrivateKeyStr;                       /*!< Claim Private key string */
     char *pClaimTemplateStr;                         /*!< Provisioning template name */
     const char *pThingNameStr;                       /*!< AWS IoT thing name */
+    uint16_t port_u16;                               /*!< AWS IoT port number */
+    uint8_t maxPubMsgToStore_u8;                     /*!< Number of publish messaged stored in Ringbuffer */
+    uint8_t maxSubMsgToStore_u8;                     /*!< Number of Subscribe messages stored in Ringbuffer */
+    uint8_t maxSubscribeTopics_u8;                   /*!< Number of Subscribe topics supported */
+    uint8_t maxJobs_u8;                              /*!< Number of jobs supported */
     awsSubscribeCallback_t subscribeCallbackHandler; /*!< Callback function for subscribe messages */
-} awsConfig_st;
+} mqttClientConfig_st;
 
 /**
  * @brief Check if the device is in connected state.
@@ -186,23 +191,7 @@ uint16_t AWS_pubMsgAvailable();
  */
 bool AWS_publishInProgress();
 
-void AWS_printStatus();
-
-/**
- * @brief Print all of the subscribed topics.
- * @param none
- * @returns none
- */
-void AWS_printSubscribedTopics();
-
-/**
- * @brief Print the configured certificates.
- * Prints ROOT CA, Client Cert. & Private key.
- * @param none
- * @returns none
- */
-void AWS_printCertificates();
-
-uint8_t AWS_getMaxJobs();
 void AWS_getShadow();
-#endif
+void AWS_clearPubMsg();
+
+#endif //_LIB_AWS_H_

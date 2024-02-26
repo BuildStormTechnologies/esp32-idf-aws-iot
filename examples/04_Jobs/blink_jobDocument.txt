@@ -1,0 +1,6 @@
+{
+    "action": "blink",
+    "count": 3, 
+    "onTime": 250,
+    "offTime": 500
+}

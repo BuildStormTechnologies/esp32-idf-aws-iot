@@ -1,9 +1,23 @@
 /**
- * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
- *
- * \file lib_flash.h
- * \brief Flash library header file.
- */
+* \copyright Copyright (c) 2019-2024, Buildstorm Pvt Ltd
+*
+* \file lib_flash.h
+* \brief Flash library header file.
+*
+* This file defines the structure and enums used by the Flash library.
+*
+*
+* The libraries have been tested on the ESP32 modules.
+* Buildstorm explicitly denies responsibility for any hardware failures
+* arising from the use of these libraries, whether directly or indirectly.
+
+*
+* EULA LICENSE:
+* This library is licensed under end user license EULA agreement.
+* The EULA is available at https://buildstorm.com/eula/
+* For any support contact us at hello@buildstorm.com
+*
+*/
 
 #ifndef _LIB_MODULE_FLASH_H_
 #define _LIB_MODULE_FLASH_H_
@@ -28,17 +42,6 @@ typedef enum
 } flashStatus_t;
 
 /**
- * @enum systemStatusParams_et
- * An enum to represent System parameters.
- */
-typedef enum
-{
-    SYSTEM_STATUS_OTA, /*!< System parameter OTA */
-    SYSTEM_STATUS_ALL, /*!< System parameter ALL */
-    SYSTEM_STATUS_MAX  /*!< Total number of parameters */
-} systemStatusParams_et;
-
-/**
  * @enum deviceConfigParams_et
  * An enum to represent Device Configuration parameters.
  */
@@ -46,8 +49,6 @@ typedef enum
 {
     DEVICE_CONFIG_HOST,       /*!< AWS IoT Host */
     DEVICE_CONFIG_PORT,       /*!< AWS IoT Port number */
-    DEVICE_CONFIG_USERNAME,   /*!< MQTT Username */
-    DEVICE_CONFIG_PASSWORD,   /*!< MQTT Password */
     DEVICE_CONFIG_WIFI,       /*!< WIFI configuration parameter */
     DEVICE_CONFIG_THING_NAME, /*!< Thing name parameter */
     DEVICE_CONFIG_CLEAR,      /*!< Clear configurations */
@@ -72,7 +73,6 @@ typedef enum
 typedef enum
 {
     FLASH_DATASET_DEVICE_CONFIG,       /*!< Device configuration dataset */
-    FLASH_DATASET_SYSTEM_STATUS,       /*!< System status dataset */
     FLASH_DATASET_DEVICE_CERTIFICATES, /*!< Device certificate dataset */
     FLASH_DATASET_DEVICE_PRIVATE_KEY,  /*!< Device private key dataset */
     FLASH_DATASET_APP,                 /*!< Application dataset */
@@ -82,43 +82,22 @@ typedef enum
 /* Function declarations ----------------------------------------------------*/
 
 /**
- * @brief Print stored device configuration.
- * @param none
- * @returns none
- */
-void FLASH_printConfig();
-
-/**
  * @brief Check if a dataset is updated.
  * @param none
  * @returns Dataset update status.
  * @retval true if a dataset is updated
  * @retval false if not updated
  */
-bool FLASH_updatePending();
+bool FLASH_isBusy();
 
 /**
- * @brief Check if the device is registered with AWS IoT.
+ * @brief Check if the device is registered.
  * @param none
  * @returns Device registration status.
  * @retval true is device is registered
  * @retval false if device is not registered yet.
  */
 bool FLASH_isDeviceRegistered();
-
-/**
- * @brief Get the given certificate from stored configuration.
- * @param [in] certType_e Type of certificate
- * @returns The certificate as string
- */
-char *FLASH_getCertificate(deviceCertType_et certType_e);
-
-/**
- * @brief Get thing name from stored configuration.
- * @param none
- * @returns The thing name.
- */
-const char *FLASH_getThingName();
 
 /**
  * @brief Read the data from application dataset.
@@ -149,4 +128,4 @@ bool FLASH_appDataWrite(void *pData, uint16_t size_u16);
  */
 bool FLASH_appDataEraseAll();
 
-#endif
+#endif //_LIB_MODULE_FLASH_H_

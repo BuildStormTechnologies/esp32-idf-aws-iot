@@ -1,9 +1,23 @@
 /**
- * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
- *
- * \file lib_http.h
- *  \brief HTTP library header file.
- */
+* \copyright Copyright (c) 2019-2024, Buildstorm Pvt Ltd
+*
+* \file lib_http.h
+* \brief Http library header file.
+*
+*
+* This file defines the structure and enums used by the HTTP library and handles http requests.
+*
+* The libraries have been tested on the ESP32 modules.
+* Buildstorm explicitly denies responsibility for any hardware failures
+* arising from the use of these libraries, whether directly or indirectly.
+
+*
+* EULA LICENSE:
+* This library is licensed under end user license EULA agreement.
+* The EULA is available at https://buildstorm.com/eula/
+* For any support contact us at hello@buildstorm.com
+*
+*/
 
 #ifndef _LIB_HTTP_H_
 #define _LIB_HTTP_H_
@@ -113,7 +127,4 @@ void HTTP_close();
  */
 const char *HTTP_getStateString(httpStates_et state_e);
 
-bool HTTP_serverStart();
-void HTTP_serverSync();
-
-#endif
+#endif //_LIB_HTTP_H_

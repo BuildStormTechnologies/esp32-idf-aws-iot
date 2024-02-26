@@ -1,0 +1,4 @@
+{
+    "action" : "OTA",
+    "url" : "bin file url"
+}

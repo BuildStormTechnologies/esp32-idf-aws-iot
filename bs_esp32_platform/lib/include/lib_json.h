@@ -1,9 +1,23 @@
 /**
- * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
- *
- * \file lib_json.h
- * \brief JSON library header file.
- */
+* \copyright Copyright (c) 2019-2024, Buildstorm Pvt Ltd
+*
+* \file lib_json.h
+* \brief Json library header file.
+*
+* The JSON library provides the API's form JSON parsing
+*
+*
+* The libraries have been tested on the ESP32 modules.
+* Buildstorm explicitly denies responsibility for any hardware failures
+* arising from the use of these libraries, whether directly or indirectly.
+
+*
+* EULA LICENSE:
+* This library is licensed under end user license EULA agreement.
+* The EULA is available at https://buildstorm.com/eula/
+* For any support contact us at hello@buildstorm.com
+*
+*/
 
 #ifndef _LIB_JSON_H
 #define _LIB_JSON_H
@@ -18,8 +32,8 @@
  */
 typedef struct
 {
-    char keyStr[LENGTH_KEY_SIZE]; /*!< A key */
-    char *pValueStr;              /*!< Value associated with the key */
+    char *keyStr;    /*!< A key */
+    char *pValueStr; /*!< Value associated with the key */
 } tagStructure_st;
 
 #define MAX_JSON_ARRAY_OBJS 10
@@ -33,7 +47,6 @@ typedef struct
     uint8_t numOfJosnObjs_u8;                /*!< Number of JSON objects in array */
     char jsonObjs[MAX_JSON_ARRAY_OBJS][150]; /*!< Array of objects */
 } jsonArray_st;
-
 
 /**
  * @brief A structure to represent array of integers
@@ -53,7 +66,7 @@ typedef struct
  * @retval true on success
  * @retval false on failure
  */
-bool JSON_processString(const char *pJsonStr, const tagStructure_st tags[], uint8_t maxKeys_u8, uint8_t clearvalueFlag_u8);
+uint8_t JSON_processString(const char *pJsonStr, const tagStructure_st tags[], uint8_t maxKeys_u8, uint8_t clearvalueFlag_u8);
 
 /**
  * @brief Extract an array of JSON objects from given JSON string.
@@ -75,4 +88,4 @@ uint8_t JSON_processArrayObjs(char *pJsonStr, jsonArray_st *jsnArrPtr);
  */
 uint8_t JSON_processArrayOfIntegers(char *pJsonStr, jsonArrayList_st *jsnArrStr);
 
-#endif
+#endif //_LIB_JSON_H

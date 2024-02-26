@@ -1,9 +1,23 @@
 /**
- * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
- *
- * \file lib_msg.h
- * \brief MQTT message header file.
- */
+* \copyright Copyright (c) 2019-2024, Buildstorm Pvt Ltd
+*
+* \file lib_msg.h
+* \brief MsgTypes library header file.
+*
+*
+* This file defines the MQTT, HTTP and BLE packet structure.
+*
+* The libraries have been tested on the ESP32 modules.
+* Buildstorm explicitly denies responsibility for any hardware failures
+* arising from the use of these libraries, whether directly or indirectly.
+
+*
+* EULA LICENSE:
+* This library is licensed under end user license EULA agreement.
+* The EULA is available at https://buildstorm.com/eula/
+* For any support contact us at hello@buildstorm.com
+*
+*/
 
 #ifndef LIB_MSG_H_
 #define LIB_MSG_H_
@@ -19,8 +33,8 @@ typedef enum
 {
     QOS0_AT_MOST_ONCE = 0, /*!< At most once */
     QOS1_AT_LEASET_ONCE,   /*!< At least once */
-    // QOS2_AT_EXACTLY_ONCE   // Exactly once  // not supported
-    QOS_AT_MAX /*!< Maximum number of supported QOS levels */
+    QOS2_AT_EXACTLY_ONCE,  // Exactly once  // not supported
+    QOS_AT_MAX             /*!< Maximum number of supported QOS levels */
 } qos_et;
 
 /**
@@ -63,4 +77,4 @@ typedef struct
     uint8_t data_a8[LENGTH_HTTP_PACKET]; /*!< Received packet data */
 } packet_st;
 
-#endif /* LIB_MSG_H_ */
+#endif // LIB_MSG_H_

@@ -2,14 +2,13 @@ idf_component_register(
                         INCLUDE_DIRS
                             "."
                             "lib/include"
-                            "aws_lib/include"
 )
 
 # Import the library, specifying a target name and the library path.
 # The private dependencies of the library is also specified.
 add_prebuilt_library(
                      bs_esp32_platform
-                        "bs_esp32_platform.a"
+                        "bs_esp32_aws.a"
                      REQUIRES 
                         esp_http_client
                         esp-tls

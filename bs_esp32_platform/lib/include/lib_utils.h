@@ -1,45 +1,23 @@
+/**
+* \copyright Copyright (c) 2019-2024, Buildstorm Pvt Ltd
+*
+* \file lib_utils.h
+* \brief Utils library header file.
+*
+*
+* The  Utils library handles the utilities for data extraction and hex dumps.
+*
+* The libraries have been tested on the ESP32 modules.
+* Buildstorm explicitly denies responsibility for any hardware failures
+* arising from the use of these libraries, whether directly or indirectly.
 
-/**********************************************************************************************
-                                ExploreEmbedded
-****************************************************************************************************
-* File:   lib_utils.h
-* Version: 15.1
-* Author: ExploreEmbedded
-* Website: http://www.exploreembedded.com/wiki
-* Description: Contains standard util macros, typedefs and constants
-
-The libraries have been tested on ExploreEmbedded development boards. We strongly believe that the
-library works on any of development boards for respective controllers. However, ExploreEmbedded
-disclaims any kind of hardware failure resulting out of usage of libraries, directly or indirectly.
-Files may be subject to change without prior notice. The revision history contains the information
-related to updates.
-
-
-GNU GENERAL PUBLIC LICENSE:
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-Errors and omissions should be reported to codelibraries@exploreembedded.com
-********************************************************************************************/
-
-/*********************************************************************************************
-                            Revision History
-**********************************************************************************************
-15.0: Initial version
-15.1: Changed the prefix of bit masks from M_ to MASK_
-    Added the section others macros
-    Defined the constants for Number system
-*********************************************************************************************/
+*
+* EULA LICENSE:
+* This library is licensed under end user license EULA agreement.
+* The EULA is available at https://buildstorm.com/eula/
+* For any support contact us at hello@buildstorm.com
+*
+*/
 
 #ifndef _STD_UTIL_H_
 #define _STD_UTIL_H_
@@ -49,8 +27,10 @@ Errors and omissions should be reported to codelibraries@exploreembedded.com
 /**********************************************************************************************
                       LOGIC level
 *********************************************************************************************/
+#ifndef HIGH
 #define LOW 0x00u
 #define HIGH 0x01u
+#endif
 /***************************************************************************************/
 
 /**********************************************************************************************
@@ -134,7 +114,7 @@ typedef enum
 /**********************************************************************************************
                     Macros to extract the Nibbles
 *********************************************************************************************/
-#define util_ExtractBits0to4(x) (uint8_t)((x)&0x0Fu)
+#define util_ExtractBits0to4(x) (uint8_t)((x) & 0x0Fu)
 #define util_ExtractBits4to8(x) (uint8_t)(((x) >> 4) & 0x0Fu)
 #define util_ExtractBits8to12(x) (uint8_t)(((x) >> 8) & 0x0Fu)
 #define util_ExtractBits12to16(x) (uint8_t)(((x) >> 12) & 0x0Fu)
@@ -143,7 +123,7 @@ typedef enum
 /**********************************************************************************************
                     Macros to extract the Byte
 *********************************************************************************************/
-#define util_ExtractBits0to8(x) (uint8_t)((x)&0xFFu)
+#define util_ExtractBits0to8(x) (uint8_t)((x) & 0xFFu)
 #define util_ExtractBits8to16(x) (uint8_t)(((x) >> 8) & 0xFFu)
 #define util_ExtractBits16to24(x) (uint8_t)(((x) >> 16) & 0xFFu)
 #define util_ExtractBits24to32(x) (uint8_t)(((x) >> 24) & 0xFFu)
@@ -169,7 +149,7 @@ typedef enum
 #define util_ShiftBytesToRight(x, c) ((x) >> (8 * (c)))
 #define util_ShiftBytesToLeft(x, c) ((x) << (8 * (c)))
 
-#define util_SecToMs(x) ((x)*1000)
+#define util_SecToMs(x) ((x) * 1000)
 
 #define TIMEOUT_US(us) (us)
 #define TIMEOUT_MS(ms) (ms)
@@ -183,6 +163,7 @@ typedef enum
 uint32_t util_getNumFromStringU32(const char *pStr);
 int32_t util_getNumFromStringI32(const char *pStr);
 bool util_isValidString(const char *pStr);
-void util_hexDump(uint8_t *buffPtr, uint16_t dumpSize, uint8_t charsPerLine);
+void util_hexDump(uint8_t *buffPtr, uint16_t dumpSize, uint8_t charsPerLine, bool asciiEnable);
 float util_getFloatFromString(const char *pStr, uint8_t decPoints);
-#endif
+
+#endif //_LIB_UTILS_H_

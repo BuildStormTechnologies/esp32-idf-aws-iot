@@ -1,8 +1,20 @@
 /**
- * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ * \copyright Copyright (c) 2019-2024, Buildstorm Pvt Ltd
  *
  * \file lib_gpio.h
  * \brief GPIO library header file.
+ *
+ * The gpio library handles gpio pin operations.
+ *
+ * The libraries have been tested on the ESP32 modules.
+ * Buildstorm explicitly denies responsibility for any hardware failures
+ * arising from the use of these libraries, whether directly or indirectly.
+ *
+ * EULA LICENSE:
+ * This library is licensed under end user license EULA agreement.
+ * The EULA is available at https://buildstorm.com/eula/
+ * For any support contact us at hello@buildstorm.com
+ *
  */
 
 #ifndef _LIB_GPIO_H_
@@ -37,4 +49,4 @@ typedef void (*gpio_intr_handler)(void *arg);
  */
 void GPIO_pinMode(gpio_num_t, gpio_mode_t, gpio_int_type_t, gpio_intr_handler);
 
-#endif
+#endif //_LIB_GPIO_H_

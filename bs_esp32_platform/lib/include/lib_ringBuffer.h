@@ -1,8 +1,20 @@
 /**
- * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ * \copyright Copyright (c) 2019-2024, Buildstorm Pvt Ltd
  *
  * \file lib_ringBuffer.h
- * \brief Rig buffer library header file.
+ * \brief Ringbuffer library header file.
+ *
+ * The RingBuffer library provides the API's for ringbuffer operations
+ *
+ * The libraries have been tested on the ESP32 modules.
+ * Buildstorm explicitly denies responsibility for any hardware failures
+ * arising from the use of these libraries, whether directly or indirectly.
+ *
+ * EULA LICENSE:
+ * This library is licensed under end user license EULA agreement.
+ * The EULA is available at https://buildstorm.com/eula/
+ * For any support contact us at hello@buildstorm.com
+ *
  */
 
 #ifndef _LIB_RING_BUFFER_H_
@@ -85,4 +97,4 @@ uint16_t RB_writeChunk(rb_st *ps_rb, void *pBuffer, uint16_t buffLen_u16);
 bool RB_read(rb_st *ps_rb, void *pBuffer);
 uint16_t RB_readChunk(rb_st *ps_rb, void *pBuffer, uint16_t buffLen_u16);
 
-#endif
+#endif //_LIB_RING_BUFFER_H_
