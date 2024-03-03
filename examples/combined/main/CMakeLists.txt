@@ -1,8 +1,9 @@
+
+# Register all the required components
 idf_component_register(SRCS
                         SRC_DIRS "."
                         INCLUDE_DIRS "."
-			PRIV_REQUIRES bs_esp32_platform 
-
+                        PRIV_REQUIRES  bs_esp32_platform
 )
 
 
@@ -14,3 +15,4 @@ idf_component_register(SRCS
 target_add_binary_data(${COMPONENT_TARGET} "../../_Certificates/claimCerts/aws-root-ca.pem" TEXT)
 target_add_binary_data(${COMPONENT_TARGET} "../../_Certificates/claimCerts/claim-certificate.pem.crt" TEXT)
 target_add_binary_data(${COMPONENT_TARGET} "../../_Certificates/claimCerts/claim-private.pem.key" TEXT)
+

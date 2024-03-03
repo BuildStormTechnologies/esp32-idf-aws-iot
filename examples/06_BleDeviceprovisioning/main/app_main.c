@@ -6,15 +6,6 @@
  *
  * The app_main.c is the main entry of the application.
  *
- * The file have been tested on the ESP32 modules.
- * Buildstorm explicitly denies responsibility for any hardware failures
- * arising from the use of these file, whether directly or indirectly.
- * Please note that files are subject to change without prior notice.
- *
- * EULA LICENSE:
- * This file is licensed under end user license EULA agreement.
- * The EULA is available at https://buildstorm.com/eula/
- * For any support contact us at hello@buildstorm.com
  *
  */
 
@@ -24,7 +15,7 @@
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-
+#include "lib_ble.h"
 #include "lib_system.h"
 #include "lib_gpio.h"
 #include "app_config.h"

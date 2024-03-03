@@ -6,15 +6,6 @@
  *
  * The app_main.c is the main entry of the application.
  *
- * The file have been tested on the ESP32 modules.
- * Buildstorm explicitly denies responsibility for any hardware failures
- * arising from the use of these file, whether directly or indirectly.
- * Please note that files are subject to change without prior notice.
- *
- * EULA LICENSE:
- * This file is licensed under end user license EULA agreement.
- * The EULA is available at https://buildstorm.com/eula/
- * For any support contact us at hello@buildstorm.com
  *
  */
 
@@ -43,11 +34,10 @@
 
 /* Certificates ---------------------------------------------------------*/
 extern const uint8_t aws_root_ca_pem_start[] asm("_binary_aws_root_ca_pem_start");
-extern const uint8_t claim_certificate_pem_crt_start[] asm("_binary_claim_certificate_pem_crt_start");
-extern const uint8_t claim_private_pem_key_start[] asm("_binary_claim_private_pem_key_start");
+extern const uint8_t thing_certificate_pem_crt_start[] asm("_binary_thing_certificate_pem_crt_start");
+extern const uint8_t thing_private_pem_key_start[] asm("_binary_thing_private_pem_key_start");
 
 /* Variables -----------------------------------------------------------------*/
-
 int32_t gDesiredLedState_s32 = 0, gReportedLedState_s32 = 0;
 char gDesiredColorStr[12] = DESIRED_COLOR, gReportedColorStr[12] = DESIRED_COLOR;
 
@@ -189,12 +179,13 @@ void app_main()
             .maxSubMsgToStore_u8 = 4,
             .maxSubscribeTopics_u8 = 6,
             .maxJobs_u8 = 2,
+            .pThingNameStr = AWS_THING_NAME,
             .pHostNameStr = AWS_IOT_MQTT_HOST,
             .port_u16 = AWS_IOT_MQTT_PORT,
             .pRootCaStr = (char *)aws_root_ca_pem_start,
-            .pClaimCertStr = (char *)claim_certificate_pem_crt_start,
-            .pClaimPrivateKeyStr = (char *)claim_private_pem_key_start,
-            .pClaimTemplateStr = AWS_PROVISION_TEMPLATE_NAME}};
+            .pThingCertStr = (char *)thing_certificate_pem_crt_start,
+            .pThingPrivateKeyStr = (char *)thing_private_pem_key_start,
+        }};
 
     GPIO_pinMode(LED0_PIN, GPIO_MODE_OUTPUT, GPIO_INTR_DISABLE, NULL);
 

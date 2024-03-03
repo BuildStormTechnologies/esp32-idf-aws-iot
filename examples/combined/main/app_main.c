@@ -1,10 +1,13 @@
-/*******************************************************************************
+/**
+ * \copyright Copyright (c) 2019-2024, Buildstorm Pvt Ltd
  *
- * Filename:     app_main.c
+ * \file app_main.c
+ * \brief app_main.c file.
  *
- * Description:
- *               main entry of the application .
- *******************************************************************************/
+ * The app_main.c is the main entry of the application.
+ *
+ *
+ */
 
 /* Includes ------------------------------------------------------------------*/
 
@@ -12,7 +15,7 @@
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-
+#include "lib_ble.h"
 #include "lib_system.h"
 #include "lib_jobs.h"
 #include "lib_gpio.h"
@@ -260,17 +263,18 @@ void app_main()
         // .pWifiSsidStr = TEST_WIFI_SSID,
         // .pWifiPwdStr = TEST_WIFI_PASSWORD,
 
+        /* Aws Configuration */
         .s_mqttClientConfig = {
             .maxPubMsgToStore_u8 = 6,
             .maxSubMsgToStore_u8 = 4,
             .maxSubscribeTopics_u8 = 6,
             .maxJobs_u8 = 2,
-            //  .pThingNameStr = MY_THING_NAME,
-            // .pHostNameStr = AWS_IOT_MQTT_HOST,
-            // .port_u16 = AWS_IOT_MQTT_PORT,
+            .pThingNameStr = AWS_THING_NAME,
+            .pHostNameStr = AWS_IOT_MQTT_HOST,
+            .port_u16 = AWS_IOT_MQTT_PORT,
             .pRootCaStr = (char *)aws_root_ca_pem_start,
-            // .pThingCertStr = (char *)thing_certificate_pem_crt_start,
-            // .pThingPrivateKeyStr = (char *)thing_private_pem_key_start,
+            .pThingCertStr = (char *)thing_certificate_pem_crt_start,
+            .pThingPrivateKeyStr = (char *)thing_private_pem_key_start,
         }};
 
     GPIO_pinMode(LED0_PIN, GPIO_MODE_OUTPUT, GPIO_INTR_DISABLE, NULL);

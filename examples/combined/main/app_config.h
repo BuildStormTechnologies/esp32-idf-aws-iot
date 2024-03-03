@@ -1,11 +1,13 @@
-/*******************************************************************************
- * Copyright (c) 2021, Buildstorm Pvt Ltd
+/**
+ * \copyright Copyright (c) 2019-2024, Buildstorm Pvt Ltd
  *
- * Filename:     app_config.h
+ * \file app_config.h
+ * \brief app_config header file.
  *
- * Description:
- *               Contains macros for the application
- *******************************************************************************/
+ * The app_config Contains macros for the application.
+ *
+ *
+ */
 
 #ifndef _APP_CONFIG_H_
 #define _APP_CONFIG_H_
@@ -18,16 +20,17 @@
 #include "lib_config.h"
 
 #define APP_MODULE_MAIN LIB_MODULE_MAX
+
 //-------------------------APP CONFIG--------------------------/
 
 #define TASK_APP_PRIORITY 4
-#define TASK_APP_STACK_SIZE (5 * 1024) // reduce it to 4096
+#define TASK_APP_STACK_SIZE (4 * 1024) // reduce it to 4096
 
 #define TEST_WIFI_SSID "Wifi SSID"
 #define TEST_WIFI_PASSWORD "Wifi Password"
 
-#define MY_THING_NAME "saramodem"
-#define AWS_IOT_MQTT_HOST "Your AWS host"
+#define AWS_THING_NAME "Your Thing Name"
+#define AWS_IOT_MQTT_HOST "Your AWS host""
 
 #define AWS_IOT_MQTT_PORT 8883
 #define AWS_PROVISION_TEMPLATE_NAME "Provision Template"

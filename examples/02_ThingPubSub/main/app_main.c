@@ -6,15 +6,6 @@
  *
  * The app_main.c is the main entry of the application.
  *
- * The file have been tested on the ESP32 modules.
- * Buildstorm explicitly denies responsibility for any hardware failures
- * arising from the use of these file, whether directly or indirectly.
- * Please note that files are subject to change without prior notice.
- *
- * EULA LICENSE:
- * This file is licensed under end user license EULA agreement.
- * The EULA is available at https://buildstorm.com/eula/
- * For any support contact us at hello@buildstorm.com
  *
  */
 
@@ -132,7 +123,7 @@ void app_main()
             .maxSubMsgToStore_u8 = 4,
             .maxSubscribeTopics_u8 = 6,
             .maxJobs_u8 = 2,
-            
+            .pThingNameStr = AWS_THING_NAME,
             .pHostNameStr = AWS_IOT_MQTT_HOST,
             .port_u16 = AWS_IOT_MQTT_PORT,
             .pRootCaStr = (char *)aws_root_ca_pem_start,
