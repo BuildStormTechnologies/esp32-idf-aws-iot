@@ -18,7 +18,7 @@ Supported features:
 ## References
 1. [ESP32 – IDF: AWS IoT Device Provision](https://buildstorm.com/blog/esp32-idf-aws-iot-device-provision/)
 2. [ESP32 AWS-IOT OTA library on ESP-IDF](https://buildstorm.com/blog/esp32-aws-iot-ota-library-on-esp-idf/)
-3. [AWS Mobile App User Manuel](https://buildstorm.com/blog/esp32-aws-iot-ota-library-on-esp-idf/)
+3. [AWS Mobile App User Manuel]([https://buildstorm.com/blog/esp32-aws-iot-ota-library-on-esp-idf/](https://buildstorm.com/blog/mobile-app-user-manual/))
 
 
 ## Requirements
