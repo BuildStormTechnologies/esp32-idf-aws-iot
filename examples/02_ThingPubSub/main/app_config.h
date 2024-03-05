@@ -29,6 +29,7 @@
 #define TEST_WIFI_SSID "Wifi SSID"
 #define TEST_WIFI_PASSWORD "Wifi Password"
 
+#define AWS_THING_NAME "your Thing Name"
 #define AWS_IOT_MQTT_HOST "Your AWS host"
 #define AWS_IOT_MQTT_PORT 8883
 

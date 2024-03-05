@@ -260,8 +260,8 @@ void app_main()
     systemInitConfig_st sysConfig = {
         .systemEventCallbackHandler = app_eventsCallBackHandler,
         .pAppVersionStr = APP_VERSION,
-        // .pWifiSsidStr = TEST_WIFI_SSID,
-        // .pWifiPwdStr = TEST_WIFI_PASSWORD,
+        .pWifiSsidStr = TEST_WIFI_SSID,
+        .pWifiPwdStr = TEST_WIFI_PASSWORD,
 
         /* Aws Configuration */
         .s_mqttClientConfig = {
