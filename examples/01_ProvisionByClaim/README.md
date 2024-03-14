@@ -1,7 +1,7 @@
 # Provisioning By Claim
 
 ## Blogs
-
+1. [AWS IoT Device Provisioning](https://buildstorm.com/blog/esp32-idf-aws-iot-device-provision/)
 
 ## Videos
 
