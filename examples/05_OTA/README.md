@@ -1,7 +1,7 @@
 # OTA
 
 ## Blogs
-
+1. [OTA Update using AWS S3 and Jobs](https://buildstorm.com/blog/esp32-aws-iot-ota-library-on-esp-idf/)
 
 ## Videos
 
