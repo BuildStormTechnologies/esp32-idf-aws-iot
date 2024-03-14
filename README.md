@@ -1,6 +1,6 @@
 # esp32_platform
 
-## Blogs
+## Reference
 1. [ESP32 – IDF: AWS IoT Device Provision](https://buildstorm.com/blog/esp32-idf-aws-iot-device-provision/)
 2. [ESP32 AWS-IOT OTA library on ESP-IDF](https://buildstorm.com/blog/esp32-aws-iot-ota-library-on-esp-idf/)
 3. [API Reference Guide](https://buildstorm.com/docs/aws_iot_for_esp32/v1.0.0/index.html)
