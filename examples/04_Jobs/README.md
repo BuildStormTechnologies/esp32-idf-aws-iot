@@ -1,10 +1,5 @@
 # Jobs
 
-## Blogs
-
-
-## Videos
-
 ## Reference
 
 
