@@ -52,7 +52,7 @@ Supported features:
 
 ## Soc Compatibility
 
-| Name     | BLE       | OTA       |
-| -------- | --------- | --------- |
-| ESP32    | Supported | Supported |
-| ESP32 S3 | Supported | Supported |
+| Name            | BLE           | OTA           |Ethernet W5500 |
+|-----------------|---------------|---------------|---------------|
+| ESP32           | Supported     | Supported     | Supported     |
+| ESP32 S3        | Supported     | Supported     | Supported     |
